@@ -7,8 +7,7 @@ const DomParser = require('dom-parser'),
 
 exports.count = async function count(category) {
   for (let url_key in company) {
-    //let url = company[url_key].url[category]
-    let url = ''
+    let url = '';
     if (company[url_key].url[category]) {
       url = company[url_key].url[category]
     } else {
