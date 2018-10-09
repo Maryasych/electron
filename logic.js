@@ -7,7 +7,13 @@ const DomParser = require('dom-parser'),
 
 exports.count = async function count(category) {
   for (let url_key in company) {
-    let url = company[url_key].url[category]
+    //let url = company[url_key].url[category]
+    let url = ''
+    if (company[url_key].url[category]) {
+      url = company[url_key].url[category]
+    } else {
+      continue
+    }
     await say(url, url_key, company[url_key].url_end)
   }
 }
@@ -28,9 +34,7 @@ async function steps(url, url_key, url_end) {
       return Promise.resolve()
     };
     await delay();
-    //console.log(`url = ${url} url_key = ${url_key} url_end = ${url_end}`)
     i == 1 ? await getContent(url, url_key) : await getContent(url + url_end + i + '/', url_key)
-    //console.log(url + url_end + i + '/', url_key, `i = ${i}`)
   }
 }
 async function getContent(productCategory, company_key) {
@@ -45,16 +49,16 @@ async function getContent(productCategory, company_key) {
           var productCard = company.getProductCard(item);
           var productProperites = company.getProductProperites(productCard)
           db.insert({
-              "company": company.name,
-              "prodName": productProperites.productName,
-              "price": productProperites.productPrice.match(/\d+.\d+/g)[0].replace(',','.'),
-              "stock": productProperites.stockStatus
-            })
+            "company": company.name,
+            "prodName": productProperites.productName,
+            "price": productProperites.productPrice,
+            "stock": productProperites.stockStatus
+          })
         }
       })
     })
-    .then(db.find({}, (err,res)=>{
-      if(err){
+    .then(db.find({}, (err, res) => {
+      if (err) {
         alert(err)
         return Promise.resolve();
       }
