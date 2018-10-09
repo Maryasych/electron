@@ -1,0 +1,21 @@
+{
+  "name": "electron_app",
+  "version": "1.0.3",
+  "description": "exe",
+  "main": "index.js",
+  "dependencies": {
+    "dom-parser": "^0.1.5",
+    "nedb": "^1.8.0",
+    "needle": "^2.2.1"
+  },
+  "devDependencies": {
+    "electron": "^2.0.5",
+    "electron-builder": "^20.28.4"
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "build"
+  },
+  "author": "me",
+  "license": "ISC"
+}

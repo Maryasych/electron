@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <title>Scrapper</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row mt-2">
+            <div class="col-9 scprapped">
+                <div class="d-flex">
+                    <input type="text" id="search-field" class=" w-50 border border-success rounded">
+                    <div class="input-group justify-content-end">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text">Курс</span>
+                        </div>
+                    <input type="text" id="currency" value='1'>
+                </div>
+                </div>
+                <table class="table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Product name</th>
+                            <th>Price</th>
+                            <th>Stock status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="scrapped"></tbody>
+                </table>
+            </div>
+            <div class="col-2 button-group justify-content-center">
+                <div class="wrap">
+                    <div class="d-flex flex-column" id="buttons">
+                        <button type="button" class="btn btn-primary mb-1" id='ati'>ATI</button>
+                        <button type="button" class="btn btn-primary mb-1" id="nvidia">nVidia</button>
+                        <button type="button" class="btn btn-primary mb-1" id="intel">Intel</button>
+                        <button type="button" class="btn btn-danger mb-1" id="clear">Clean</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="fixed-bottom d-flex bg-secondary text-white">
+            <div class="col-6 text-center" id="info"></div>
+            <div class="col-6 text-center" id="process"></div>
+        </footer>
+    </div>
+</body>
+
+<script src='./controller.js'></script>
+
+</html>
