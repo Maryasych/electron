@@ -8,8 +8,7 @@ db.loadDatabase(function (err) { // Callback is optional
     // Now commands will be executed
 });
 
-let buttons = document.querySelectorAll('#buttons button:not(:last-child)'),
-    clear = document.getElementById('clear'),
+let buttons = document.getElementById('buttons'),
     searchField = document.getElementById('search-field'),
     scrapped = document.getElementById('scrapped'),
     proc = document.getElementById('process'),
@@ -17,17 +16,16 @@ let buttons = document.querySelectorAll('#buttons button:not(:last-child)'),
     currency = 1;
 
 document.getElementById('currency').onblur = function () {
-    currency = isNaN(this.value) ?  this.value = 1 : this.value;
+    currency = isNaN(this.value) ? this.value = 1 : this.value;
 };
 
-[...buttons].forEach(item => {
-    item.addEventListener('click', function () {
-        logic.count(this.id)
-    })
-})
-clear.onclick = () => db.remove({}, {
+buttons.onclick = (event) => {
+    let button = event.target;
+    button.id !== 'clear' ? logic.count(button.id) : db.remove({}, {
         multi: true,
-    })
+    });
+}
+
 searchField.oninput = function () {
     if (this.value.length >= 3) {
         let val = this.value;
