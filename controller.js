@@ -56,10 +56,7 @@ function showTable(res, result) {
         <td>${res[i].company}</td>
         <td>${res[i].prodName}</td>
         <td>${((res[i].price)/currency).toFixed(2)}</td>
-        ${res[i].stock.toLowerCase().replace(/\s+/g, "") == 'нетвналичии' || 
-        res[i].stock.toLowerCase().replace(/\s+/g, "") == 'outofstock' || 
-        res[i].stock.toLowerCase().replace(/\s+/g, "") == 'ожидается' ?
-        `<td class="bg-info">${res[i].stock}</td>` : `<td>${res[i].stock}</td>`}
+        ${res[i].stock.match(/out|нет|no|ожидае*|под/ig) ? `<td class="bg-info">${res[i].stock}</td>` : `<td>${res[i].stock}</td>`}
         </tr>`
     })
 }
